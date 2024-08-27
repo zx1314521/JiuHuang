@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b167951743face4780e32454cd2bc86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Fire: {fileID: 1692517446758730, guid: 08fd1b80cc24cc8439f45fda3c558255, type: 3}
 --- !u!1 &1201309913
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +294,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c213c70f5f46a2c44bfe9dffefef3e0c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -352,15 +353,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: dede5ae63367f1540ba09172f877f796, type: 2}
     - target: {fileID: 5251107426523682287, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.6641784
+      value: 0.31
       objectReference: {fileID: 0}
     - target: {fileID: 5251107426523682287, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000009536743
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 5251107426523682287, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.88404083
+      value: 0.86
       objectReference: {fileID: 0}
     - target: {fileID: 5251107426523682287, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       propertyPath: m_LocalRotation.w
@@ -394,6 +395,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Magician_RIO
       objectReference: {fileID: 0}
+    - target: {fileID: 7940719953895527930, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8596922782724547461, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -405,9 +410,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7940719953895527930, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       insertIndex: -1
       addedObject: {fileID: 854391665}
-    - targetCorrespondingSourceObject: {fileID: 8722707484499129528, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 2099075728}
   m_SourcePrefab: {fileID: 100100000, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
 --- !u!1 &1897511225
 GameObject:
@@ -503,23 +505,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &2099075725 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8722707484499129528, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
-  m_PrefabInstance: {fileID: 1847374256}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2099075728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2099075725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b167951743face4780e32454cd2bc86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
