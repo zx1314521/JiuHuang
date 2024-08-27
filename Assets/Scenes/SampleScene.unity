@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0.17309982, g: 0.2163475, b: 0.29835516, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -122,6 +123,26 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1129005043 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6403194738929229220, guid: abdf4a171ce7a714cbd7124357f7f69b, type: 3}
+  m_PrefabInstance: {fileID: 1477118478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1129005049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129005043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b167951743face4780e32454cd2bc86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0
+  Fire: {fileID: 1692517446758730, guid: 08fd1b80cc24cc8439f45fda3c558255, type: 3}
+  Fire_skill: {fileID: 1537593200154216, guid: 25093a0593dc83043a7bc17ebba0e95d, type: 3}
 --- !u!1 &1201309913
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,9 +243,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3413205023298464597, guid: abdf4a171ce7a714cbd7124357f7f69b, type: 3}
+      propertyPath: Fire_skill
+      value: 
+      objectReference: {fileID: 1537593200154216, guid: 25093a0593dc83043a7bc17ebba0e95d, type: 3}
     - target: {fileID: 6069801448433935092, guid: abdf4a171ce7a714cbd7124357f7f69b, type: 3}
       propertyPath: m_Name
       value: Magician_RIO
+      objectReference: {fileID: 0}
+    - target: {fileID: 6069801448433935092, guid: abdf4a171ce7a714cbd7124357f7f69b, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6403194738929229220, guid: abdf4a171ce7a714cbd7124357f7f69b, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7115716391723020098, guid: abdf4a171ce7a714cbd7124357f7f69b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -266,10 +299,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3413205023298464597, guid: abdf4a171ce7a714cbd7124357f7f69b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6403194738929229220, guid: abdf4a171ce7a714cbd7124357f7f69b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1129005049}
   m_SourcePrefab: {fileID: 100100000, guid: abdf4a171ce7a714cbd7124357f7f69b, type: 3}
 --- !u!1 &1588055481
 GameObject:
@@ -283,7 +320,6 @@ GameObject:
   - component: {fileID: 1588055484}
   - component: {fileID: 1588055483}
   - component: {fileID: 1588055482}
-  - component: {fileID: 1588055486}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -378,33 +414,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &1588055486
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1588055481}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1897511225
 GameObject:
   m_ObjectHideFlags: 0
