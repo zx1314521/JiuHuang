@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Sample {
+
+
 public class GhostScript : MonoBehaviour
 {
     private Animator Anim;
@@ -22,66 +23,82 @@ public class GhostScript : MonoBehaviour
     private bool DissolveFlg = false;
     private const int maxHP = 3;
     private int HP = maxHP;
-    private Text HP_text;
+
+    public GameObject Player;
 
     // moving speed
     [SerializeField] private float Speed = 4;
 
     void Start()
     {
+        Player = GameObject.FindWithTag("Player");
         Anim = this.GetComponent<Animator>();
         Ctrl = this.GetComponent<CharacterController>();
-        HP_text = GameObject.Find("Canvas/HP").GetComponent<Text>();
-        HP_text.text = "HP " + HP.ToString();
     }
 
-    void Update()
-    {
-        STATUS();
-        GRAVITY();
+    float time = 0;
+    void Update(){
+        STATUS(); // 如果字典是true就能做出动作
+        GRAVITY(); // 
         Respawn();
-        // this character status
-        if(!PlayerStatus.ContainsValue( true ))
+        float dist = Vector3.Distance(Player.transform.position, transform.position);
+        if (dist < 100f && dist > 2f)
         {
-            MOVE();
+            // move att
+            transform.LookAt(Player.transform);
+            transform.Translate(Vector3.forward * Time.deltaTime * Speed);
+        }
+        if (dist <= 2f && time >= 2)
+        {
             PlayerAttack();
-            Damage();
+            time = 0;
         }
-        else if(PlayerStatus.ContainsValue( true ))
-        {
-            int status_name = 0;
-            foreach(var i in PlayerStatus)
-            {
-                if(i.Value == true)
-                {
-                    status_name = i.Key;
-                    break;
-                }
-            }
-            if(status_name == Dissolve)
-            {
-                PlayerDissolve();
-            }
-            else if(status_name == Attack)
-            {
-                PlayerAttack();
-            }
-            else if(status_name == Surprised)
-            {
-                // nothing method
-            }
-        }
-        // Dissolve
-        if(HP <= 0 && !DissolveFlg)
-        {
-            Anim.CrossFade(DissolveState, 0.1f, 0, 0);
-            DissolveFlg = true;
-        }
-        // processing at respawn
-        else if(HP == maxHP && DissolveFlg)
-        {
-            DissolveFlg = false;
-        }
+        time += Time.deltaTime;
+
+
+
+        // this character status
+        //if(!PlayerStatus.ContainsValue( true ))
+        //{
+        //    MOVE();
+        //    PlayerAttack();
+        //    Damage();
+        //}
+        //else if(PlayerStatus.ContainsValue( true ))
+        //{
+        //    int status_name = 0;
+        //    foreach(var i in PlayerStatus)
+        //    {
+        //        if(i.Value == true)
+        //        {
+        //            status_name = i.Key;
+        //            break;
+        //        }
+        //    }
+        //    if(status_name == Dissolve)
+        //    {
+        //        PlayerDissolve();
+        //    }
+        //    else if(status_name == Attack)
+        //    {
+        //        PlayerAttack();
+        //    }
+        //    else if(status_name == Surprised)
+        //    {
+        //        // nothing method
+        //    }
+        //}
+        //// Dissolve
+        //if(HP <= 0 && !DissolveFlg)
+        //{
+        //    Anim.CrossFade(DissolveState, 0.1f, 0, 0);
+        //    DissolveFlg = true;
+        //}
+        //// processing at respawn
+        //else if(HP == maxHP && DissolveFlg)
+        //{
+        //    DissolveFlg = false;
+        //}
     }
 
     //---------------------------------------------------------------------
@@ -97,7 +114,7 @@ public class GhostScript : MonoBehaviour
         {Surprised, false },
     };
     //------------------------------
-    private void STATUS ()
+    private void STATUS () // 设置动作
     {
         // during dissolve
         if(DissolveFlg && HP <= 0)
@@ -143,10 +160,7 @@ public class GhostScript : MonoBehaviour
     // play a animation of Attack
     private void PlayerAttack ()
     {
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            Anim.CrossFade(AttackState,0.1f,0,0);
-        }
+        Anim.CrossFade(AttackState,0.1f,0,0);
     }
     //---------------------------------------------------------------------
     // gravity for fall of this character
@@ -283,19 +297,18 @@ public class GhostScript : MonoBehaviour
     private void Damage ()
     {
         // Damaged by outside field.
-        if(Input.GetKeyUp(KeyCode.S))
-        {
+        //if(Input.GetKeyUp(KeyCode.S)) // 受到惊吓的动作
+        //{
             Anim.CrossFade(SurprisedState, 0.1f, 0, 0);
             HP--;
-            HP_text.text = "HP " + HP.ToString();
-        }
+        //}
     }
     //---------------------------------------------------------------------
     // respawn
     //---------------------------------------------------------------------
     private void Respawn ()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space)) // 重置鬼
         {
             // player HP
             HP = maxHP;
@@ -315,5 +328,4 @@ public class GhostScript : MonoBehaviour
             Anim.CrossFade(IdleState, 0.1f, 0, 0);
         }
     }
-}
 }
