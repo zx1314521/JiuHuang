@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &124055114
+--- !u!1001 &429513501
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -137,15 +137,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 796652407307068396, guid: 8ee08d04ad5df46fbb2e97260b63420b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 796652407307068396, guid: 8ee08d04ad5df46fbb2e97260b63420b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.11000013
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 796652407307068396, guid: 8ee08d04ad5df46fbb2e97260b63420b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.22612572
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 796652407307068396, guid: 8ee08d04ad5df46fbb2e97260b63420b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -290,19 +290,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6069801448433935092, guid: abdf4a171ce7a714cbd7124357f7f69b, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6403194738929229220, guid: abdf4a171ce7a714cbd7124357f7f69b, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: fuck
       objectReference: {fileID: 0}
     - target: {fileID: 7115716391723020098, guid: abdf4a171ce7a714cbd7124357f7f69b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.31
+      value: 2.095
       objectReference: {fileID: 0}
     - target: {fileID: 7115716391723020098, guid: abdf4a171ce7a714cbd7124357f7f69b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.04
+      value: -0.186
       objectReference: {fileID: 0}
     - target: {fileID: 7115716391723020098, guid: abdf4a171ce7a714cbd7124357f7f69b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -340,10 +340,7 @@ PrefabInstance:
     - {fileID: 3413205023298464597, guid: abdf4a171ce7a714cbd7124357f7f69b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6403194738929229220, guid: abdf4a171ce7a714cbd7124357f7f69b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1129005049}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abdf4a171ce7a714cbd7124357f7f69b, type: 3}
 --- !u!1 &1588055481
 GameObject:
@@ -553,4 +550,4 @@ SceneRoots:
   - {fileID: 1897511227}
   - {fileID: 1588055485}
   - {fileID: 1477118478}
-  - {fileID: 124055114}
+  - {fileID: 429513501}

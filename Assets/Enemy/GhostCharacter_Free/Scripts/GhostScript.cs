@@ -31,7 +31,7 @@ public class GhostScript : MonoBehaviour
 
     void Start()
     {
-        Player = GameObject.FindWithTag("Player");
+        Player = GameObject.FindWithTag("fuck");
         Anim = this.GetComponent<Animator>();
         Ctrl = this.GetComponent<CharacterController>();
     }
