@@ -5,6 +5,7 @@ using UnityEngine;
 public class h_player_control : MonoBehaviour
 {
     // Start is called before the first frame update
+    public GameObject Fire;
     void Start()
     {
         
@@ -25,6 +26,12 @@ public class h_player_control : MonoBehaviour
         if(dir != Vector3.zero)
         {
             transform.Translate(dir * Time.deltaTime);
+        }
+
+        //按下鼠标左键发射子弹
+        if (Input.GetMouseButtonDown(0))
+        {
+            Instantiate(Fire,transform.position,transform.rotation);
         }
     }
 }
