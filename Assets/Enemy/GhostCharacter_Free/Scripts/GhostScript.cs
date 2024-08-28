@@ -24,6 +24,7 @@ public class GhostScript : MonoBehaviour
     private float Dissolve_value = 1;
     private bool DissolveFlg = false;
     private const int maxHP = 3;
+    private GameObject Fire;
 
     public int HP = maxHP;
     public GameObject Enemy_Fire; 
@@ -38,7 +39,10 @@ public class GhostScript : MonoBehaviour
     }
 
     float time = 0;
+    float time_fire = 0;
     float nowtime = 0;
+    bool Attacknow = false;
+    float Atdist = 5;
     void Update(){
         STATUS(); // 如果字典是true就能做出动作
         GRAVITY(); // 
@@ -55,20 +59,42 @@ public class GhostScript : MonoBehaviour
             DissolveFlg = true;
             nowtime = time;
         }
-        else if (dist < 100f && dist > 2f && HP > 0)
+        else if (dist < 100f && dist > Atdist && HP > 0)
         {
             // move att
             transform.LookAt(Player.transform);
             transform.Translate(Vector3.forward * Time.deltaTime * Speed);
         }
-        else if (dist <= 2f && time >= 2 && HP > 0)
+        else if (dist <= Atdist && time >= 2 && HP > 0 && Attacknow == false)
         {
+            transform.LookAt(Player.transform);
             PlayerAttack();
             time = 0;
         }
         time += Time.deltaTime;
 
-
+        if(Attacknow == true)
+        {
+            Fire.transform.Translate(Vector3.forward * 4 * Time.deltaTime);
+            
+            float dist_Fire = Vector3.Distance(Player.transform.position, Fire.transform.position);
+            Debug.Log(dist_Fire);
+            if(dist_Fire <= 0.5f)
+            {
+                H_player_control attack = Player.GetComponent<H_player_control>();
+                attack.Damage();
+                Attacknow = false;
+                Destroy(Fire);
+                time_fire = 0;
+            }
+            time_fire += Time.deltaTime;
+            if(time_fire >= 1)
+            {
+                Attacknow = false;
+                Destroy(Fire);
+                time_fire = 0;
+            }
+        }
 
         // this character status
         //if(!PlayerStatus.ContainsValue( true ))
@@ -173,7 +199,8 @@ public class GhostScript : MonoBehaviour
     // play a animation of Attack
     private void PlayerAttack ()
     {
-        Instantiate(Enemy_Fire, transform.position, transform.rotation);
+        Fire = Instantiate(Enemy_Fire, transform.position, transform.rotation);
+        Attacknow = true;
         Anim.CrossFade(AttackState,0.1f,0,0);
     }
     //---------------------------------------------------------------------
