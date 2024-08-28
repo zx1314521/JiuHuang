@@ -32,7 +32,7 @@ public class H_Fire_Control2 : MonoBehaviour
 
         // 获取虚拟轴
         float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float vertical   = Input.GetAxis("Vertical");
 
         Vector3 dir = new Vector3(horizontal, 0, vertical).normalized;
         transform.Translate(dir * speed * Time.deltaTime, Space.World);
@@ -45,16 +45,25 @@ public class H_Fire_Control2 : MonoBehaviour
         }
         CD += Time.deltaTime;
 
-        //攻击判定
+        // 敌人属性
         GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
-        //伤害判断
-        foreach (GameObject enemy in enemys)
+        int enemyCount = enemys.Length;
+        bool[] enemyHit = new bool[enemyCount];
+
+        // 伤害判断
+        for (int i = 0; i < enemyCount; i++)
         {
-            if (Vector3.Distance(transform.position, enemy.transform.position) < 3f)
+            GameObject enemy = enemys[i];
+            if (Vector3.Distance(transform.position, enemy.transform.position) < 1f)
             {
-                // 小于0.5米，炸到敌人，对敌人进行扣除血量
+                // 小于1米，炸到敌人，对敌人进行扣除血量
                 GhostScript attack = enemy.GetComponent<GhostScript>();
                 attack.Damage();
+                enemyHit[i] = true; // 标记敌人已被击中
+            }
+            else
+            {
+                enemyHit[i] = false; // 标记敌人未被击中
             }
         }
     }
