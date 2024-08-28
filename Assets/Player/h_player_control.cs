@@ -22,7 +22,7 @@ public class H_player_control : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         // 构建向量
-        Vector3 dir = new Vector3(horizontal, 0, vertical).normalized;
+        Vector3 dir = new Vector3(-1 * horizontal, 0, -1 * vertical).normalized;
         if (dir != Vector3.zero)
         {
             // 移动角色
@@ -64,7 +64,6 @@ public class H_player_control : MonoBehaviour
     {
         HP--;
     }
-
 //-------------------------------------------------------------------------------------
     void Update()
     {

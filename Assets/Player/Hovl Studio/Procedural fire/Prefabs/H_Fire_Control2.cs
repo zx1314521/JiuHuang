@@ -34,7 +34,7 @@ public class H_Fire_Control2 : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical   = Input.GetAxis("Vertical");
 
-        Vector3 dir = new Vector3(horizontal, 0, vertical).normalized;
+        Vector3 dir = new Vector3(-1 * horizontal, 0, -1 * vertical).normalized;
         transform.Translate(dir * speed * Time.deltaTime, Space.World);
 
         Quaternion toRotation = Quaternion.LookRotation(dir);

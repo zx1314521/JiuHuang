@@ -8,7 +8,7 @@ public class H_Fire_Control : MonoBehaviour
     //物体属性
     float CD_Fire = 0;
     public Vector3 Move_dir;
-//----------------------------------------------------------------------
+    //----------------------------------------------------------------------
     //预设体引用
     public GameObject Player;
     public GameObject Bomb;
@@ -16,10 +16,10 @@ public class H_Fire_Control : MonoBehaviour
     //物体方法
     void Start()               //预处理角色预制体和移动反方向
     {
-        Player     = GameObject.FindWithTag("Player");
-        Move_dir   = Player.transform.forward.normalized;
+        Player = GameObject.FindWithTag("Player");
+        Move_dir = Player.transform.forward.normalized;
     }
-
+   
     private void Fire_Move()   //物体的移动
     {
         if (Move_dir.x < 0) Move_dir.x = -1 * Move_dir.x;
