@@ -308,14 +308,12 @@ public class GhostScript : MonoBehaviour
     //---------------------------------------------------------------------
     // damage
     //---------------------------------------------------------------------
-    public void Damage ()
+    public bool Damage ()
     {
         //Anim.CrossFade(SurprisedState, 0.1f, 0, 0);
+        if(HP <= 0) { return false; }
         HP --;
-        //if (HP == 0)
-        //{
-        //    Destroy(gameObject);
-        //}
+        return true;
     }
     //---------------------------------------------------------------------
     // respawn
