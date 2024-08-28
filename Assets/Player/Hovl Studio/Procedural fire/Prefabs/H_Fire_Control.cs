@@ -6,7 +6,7 @@ public class H_Fire_Control : MonoBehaviour
 {
     public GameObject Player;
     public GameObject Bomb;
-    public Vector3 Move_dir;
+    public Vector3    Move_dir;
     void Start()
     {
         Player     = GameObject.FindWithTag("Player");
@@ -35,12 +35,12 @@ public class H_Fire_Control : MonoBehaviour
         //伤害判断
         foreach (GameObject enemy in enemys)
         {
-            if (Vector3.Distance(transform.position, enemy.transform.position) < 1f)
+            if (Vector3.Distance(transform.position, enemy.transform.position) < 0.5f)
             {
-                // 小于3米，炸到敌人，对敌人进行销毁
-                Destroy(enemy);
+                // 小于0.5米，炸到敌人，对敌人进行扣除血量
+                GhostScript attack = enemy.GetComponent<GhostScript>();
+                attack.Damage();
             }
         }
-        
     }
 }
