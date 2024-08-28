@@ -52,8 +52,9 @@ public class H_Fire_Control2 : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, enemy.transform.position) < 3f)
             {
-                // 小于3米，炸到敌人，对敌人进行销毁
-                Destroy(enemy);
+                // 小于0.5米，炸到敌人，对敌人进行扣除血量
+                GhostScript attack = enemy.GetComponent<GhostScript>();
+                attack.Damage();
             }
         }
     }

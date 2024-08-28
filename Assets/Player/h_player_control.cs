@@ -69,6 +69,7 @@ public class H_player_control : MonoBehaviour
     public GameObject Skill;
     void Update()
     {
+        Damage();
         Player_Move();
         Player_attack();
         Player_skill_1();
