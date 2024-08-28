@@ -24,8 +24,8 @@ public class GhostScript : MonoBehaviour
     private float Dissolve_value = 1;
     private bool DissolveFlg = false;
     private const int maxHP = 3;
-    private int HP = maxHP;
 
+    public int HP = maxHP;
     public GameObject Enemy_Fire; 
     // moving speed
     [SerializeField] private float Speed = 4;
@@ -41,19 +41,25 @@ public class GhostScript : MonoBehaviour
     void Update(){
         STATUS(); // 如果字典是true就能做出动作
         GRAVITY(); // 
-        Respawn();
-        
+        //Respawn();
+        Damage();
         float dist = Vector3.Distance(Player.transform.position, transform.position);
-        if (dist < 100f && dist > 2f)
+        if (HP <= 0 && !DissolveFlg)
+        {
+            Anim.CrossFade(DissolveState, 0.1f, 0, 0);
+            DissolveFlg = true;
+        }
+        else if (dist < 100f && dist > 2f)
         {
             // move att
             transform.LookAt(Player.transform);
             transform.Translate(Vector3.forward * Time.deltaTime * Speed);
         }
-        if (dist <= 2f && time >= 2)
+        else if (dist <= 2f && time >= 2)
         {
             PlayerAttack();
             time = 0;
+            Damage();
         }
         time += Time.deltaTime;
 
@@ -297,13 +303,13 @@ public class GhostScript : MonoBehaviour
     //---------------------------------------------------------------------
     // damage
     //---------------------------------------------------------------------
-    private void Damage ()
+    public void Damage ()
     {
-        // Damaged by outside field.
-        //if(Input.GetKeyUp(KeyCode.S)) // 受到惊吓的动作
+        //Anim.CrossFade(SurprisedState, 0.1f, 0, 0);
+        HP --;
+        //if (HP == 0)
         //{
-            Anim.CrossFade(SurprisedState, 0.1f, 0, 0);
-            HP--;
+        //    Destroy(gameObject);
         //}
     }
     //---------------------------------------------------------------------
