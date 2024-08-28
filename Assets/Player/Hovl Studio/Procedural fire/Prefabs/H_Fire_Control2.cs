@@ -43,6 +43,18 @@ public class H_Fire_Control2 : MonoBehaviour
         {
             transform.RotateAround(Player.transform.position, Vector3.up, 0.8f);
         }
-        CD += Time.deltaTime;        
+        CD += Time.deltaTime;
+
+        //攻击判定
+        GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
+        //伤害判断
+        foreach (GameObject enemy in enemys)
+        {
+            if (Vector3.Distance(transform.position, enemy.transform.position) < 3f)
+            {
+                // 小于3米，炸到敌人，对敌人进行销毁
+                Destroy(enemy);
+            }
+        }
     }
 }
