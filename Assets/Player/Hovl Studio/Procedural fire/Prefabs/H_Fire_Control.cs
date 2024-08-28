@@ -14,13 +14,13 @@ public class H_Fire_Control : MonoBehaviour
     public GameObject Bomb;
 //----------------------------------------------------------------------
     //物体方法
-    void Start()              //预处理角色预制体和移动反方向
+    void Start()               //预处理角色预制体和移动反方向
     {
         Player     = GameObject.FindWithTag("Player");
         Move_dir   = Player.transform.forward.normalized;
     }
 
-    private void Fire_Move()  //物体的移动
+    private void Fire_Move()   //物体的移动
     {
         if (Move_dir.x < 0) Move_dir.x = -1 * Move_dir.x;
         if (Move_dir.y < 0) Move_dir.y = -1 * Move_dir.y;
@@ -28,7 +28,7 @@ public class H_Fire_Control : MonoBehaviour
         transform.Translate(Move_dir * Time.deltaTime * 7);
     }
     
-    private void Fire_Cd()    //物体的释放间隔与存在时间
+    private void Fire_Cd()     //物体的释放间隔与存在时间
     {
         if (CD_Fire > 1)
         {
@@ -51,12 +51,15 @@ public class H_Fire_Control : MonoBehaviour
             {
                 // 小于1米，炸到敌人，对敌人进行扣除血量 
                 GhostScript attack = enemy.GetComponent<GhostScript>();
-                attack.Damage();
+                bool judge = attack.Damage();
 
-                //进行火焰销毁
-                GameObject effect = Instantiate(Bomb, transform.position, transform.rotation);
-                Destroy(gameObject);
-                Destroy(effect, 2f);
+                //如果怪物还活着,那么进行火焰销毁
+                if(judge == true)
+                {
+                    GameObject effect = Instantiate(Bomb, transform.position, transform.rotation);
+                    Destroy(gameObject);
+                    Destroy(effect, 2f);
+                }
             }
         }
     }
