@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class H_player_control : MonoBehaviour
 {
-    //人物属性属性
+    //人物数值属性
     public  float HP = 5;
     private float speed = 10f;
     private float rotationSpeed = 700f;
@@ -61,12 +61,12 @@ public class H_player_control : MonoBehaviour
         }
     }
 
-    public void Damage()        //伤害判定函数
+    public void Damage()        //受到伤害判定函数
     {
         HP--;
     }
 
-    public GameObject Skill;
+//-------------------------------------------------------------------------------------
     void Update()
     {
         Damage();
