@@ -47,6 +47,5 @@ public class H_player_control : MonoBehaviour
                 time = i;
             }
         }
-
     }
 }

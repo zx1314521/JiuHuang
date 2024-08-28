@@ -28,5 +28,19 @@ public class H_Fire_Control : MonoBehaviour
         if (Move_dir.y < 0)  Move_dir.y  = -1 * Move_dir.y;
         if (Move_dir.z < 0)  Move_dir.z = -1  * Move_dir.z;
         transform.Translate(Move_dir * Time.deltaTime * 7);
+
+
+        //攻击判定
+        GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
+        //伤害判断
+        foreach (GameObject enemy in enemys)
+        {
+            if (Vector3.Distance(transform.position, enemy.transform.position) < 1f)
+            {
+                // 小于3米，炸到敌人，对敌人进行销毁
+                Destroy(enemy);
+            }
+        }
+        
     }
 }
