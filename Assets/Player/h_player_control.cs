@@ -15,7 +15,6 @@ public class H_player_control : MonoBehaviour
     public GameObject Fire_skill;
 //-----------------------------------------------------------------------------------    
     //人物动作函数
-
     private void Player_Move()   //人物移动
     {
         // 获取虚拟轴

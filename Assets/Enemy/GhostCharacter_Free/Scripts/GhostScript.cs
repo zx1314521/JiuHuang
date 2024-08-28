@@ -38,28 +38,33 @@ public class GhostScript : MonoBehaviour
     }
 
     float time = 0;
+    float nowtime = 0;
     void Update(){
         STATUS(); // 如果字典是true就能做出动作
         GRAVITY(); // 
         //Respawn();
-        Damage();
+        Debug.Log(HP);
         float dist = Vector3.Distance(Player.transform.position, transform.position);
-        if (HP <= 0 && !DissolveFlg)
+        if(DissolveFlg && time - nowtime >= 2)
+        {
+            Destroy(gameObject);
+        }
+        else if (HP <= 0 && !DissolveFlg)
         {
             Anim.CrossFade(DissolveState, 0.1f, 0, 0);
             DissolveFlg = true;
+            nowtime = time;
         }
-        else if (dist < 100f && dist > 2f)
+        else if (dist < 100f && dist > 2f && HP > 0)
         {
             // move att
             transform.LookAt(Player.transform);
             transform.Translate(Vector3.forward * Time.deltaTime * Speed);
         }
-        else if (dist <= 2f && time >= 2)
+        else if (dist <= 2f && time >= 2 && HP > 0)
         {
             PlayerAttack();
             time = 0;
-            Damage();
         }
         time += Time.deltaTime;
 
