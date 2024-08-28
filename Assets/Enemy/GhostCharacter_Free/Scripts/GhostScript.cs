@@ -10,6 +10,8 @@ public class GhostScript : MonoBehaviour
     private Animator Anim;
     private CharacterController Ctrl;
     private Vector3 MoveDirection = Vector3.zero;
+    private GameObject Player;
+
     // Cache hash values
     private static readonly int IdleState = Animator.StringToHash("Base Layer.idle");
     private static readonly int MoveState = Animator.StringToHash("Base Layer.move");
@@ -24,8 +26,7 @@ public class GhostScript : MonoBehaviour
     private const int maxHP = 3;
     private int HP = maxHP;
 
-    public GameObject Player;
-
+    public GameObject Enemy_Fire; 
     // moving speed
     [SerializeField] private float Speed = 4;
 
@@ -41,6 +42,7 @@ public class GhostScript : MonoBehaviour
         STATUS(); // 如果字典是true就能做出动作
         GRAVITY(); // 
         Respawn();
+        
         float dist = Vector3.Distance(Player.transform.position, transform.position);
         if (dist < 100f && dist > 2f)
         {
@@ -160,6 +162,7 @@ public class GhostScript : MonoBehaviour
     // play a animation of Attack
     private void PlayerAttack ()
     {
+        Instantiate(Enemy_Fire, transform.position, transform.rotation);
         Anim.CrossFade(AttackState,0.1f,0,0);
     }
     //---------------------------------------------------------------------

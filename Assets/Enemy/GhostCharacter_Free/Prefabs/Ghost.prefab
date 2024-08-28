@@ -136,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MeshR:
   - {fileID: 839705036205447455}
+  Enemy_Fire: {fileID: 2402163240144417279, guid: 5753e288c0a2db143938195b98d28251, type: 3}
   Speed: 4
 --- !u!137 &839705036205447455 stripped
 SkinnedMeshRenderer:
