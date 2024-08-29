@@ -63,7 +63,6 @@ public class H_Fire_Control : MonoBehaviour
             }
         }
     }
-
     //------------------------------------------------------------------------
     void Update()
     {
