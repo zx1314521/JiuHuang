@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 
@@ -25,6 +26,8 @@ public class GhostScript : MonoBehaviour
     private bool DissolveFlg = false;
     private const int maxHP = 3;
     private GameObject Fire;
+    private NavMeshAgent Agent;
+
 
     public int HP = maxHP;
     public GameObject Enemy_Fire; 
@@ -36,13 +39,14 @@ public class GhostScript : MonoBehaviour
         Player = GameObject.FindWithTag("fuck");
         Anim = this.GetComponent<Animator>();
         Ctrl = this.GetComponent<CharacterController>();
+        Agent = this.GetComponent<NavMeshAgent>();
     }
 
     float time = 0;
     float time_fire = 0;
     float nowtime = 0;
     bool Attacknow = false;
-    float Atdist = 5;
+    float Atdist = 4;
     void Update(){
         STATUS(); // 如果字典是true就能做出动作
         GRAVITY(); // 
@@ -62,8 +66,10 @@ public class GhostScript : MonoBehaviour
         else if (dist < 100f && dist > Atdist && HP > 0)
         {
             // move att
-            transform.LookAt(Player.transform);
-            transform.Translate(Vector3.forward * Time.deltaTime * Speed);
+
+            Agent.SetDestination(Player.transform.position);
+            //transform.LookAt(Player.transform);
+            //transform.Translate(Vector3.forward * Time.deltaTime * Speed);
         }
         else if (dist <= Atdist && time >= 2 && HP > 0 && Attacknow == false)
         {
@@ -75,7 +81,7 @@ public class GhostScript : MonoBehaviour
 
         if(Attacknow == true)
         {
-            Fire.transform.Translate(Vector3.forward * 4 * Time.deltaTime);
+            Fire.transform.Translate(Vector3.forward * 6 * Time.deltaTime);
             
             float dist_Fire = Vector3.Distance(Player.transform.position, Fire.transform.position);
             Debug.Log(dist_Fire);
