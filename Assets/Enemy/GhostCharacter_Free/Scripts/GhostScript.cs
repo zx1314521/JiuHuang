@@ -51,7 +51,6 @@ public class GhostScript : MonoBehaviour
         STATUS(); // 如果字典是true就能做出动作
         GRAVITY(); // 
         //Respawn();
-        Debug.Log(HP);
         float dist = Vector3.Distance(Player.transform.position, transform.position);
         if(DissolveFlg && time - nowtime >= 2)
         {
